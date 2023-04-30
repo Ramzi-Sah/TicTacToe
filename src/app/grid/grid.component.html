@@ -1,0 +1,18 @@
+<p *ngIf="winner">
+    winner is {{winner}}
+    <button (click)="newGame()">New Game</button>
+</p>
+
+<p>
+    player turn 
+    <ng-container *ngIf="nextMove; else elseBlock">X</ng-container>
+    <ng-template #elseBlock>
+        O
+    </ng-template>
+</p>
+
+<div *ngFor="let value_x of grid; let i = index">
+    <div *ngFor="let value of value_x; let j = index" class="row_div">
+        <app-square [value]="value" (click)="clicked(i, j)"></app-square>
+    </div>
+</div>
